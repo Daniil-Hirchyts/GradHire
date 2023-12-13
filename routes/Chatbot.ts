@@ -30,37 +30,47 @@ router.get("/", verifyToken, async (req: RequestWithUser, res: Response) => {
 
 // @ts-ignore
 router.post("/", verifyToken, async (req: RequestWithUser, res: Response) => {
-    if (!req.body.message) return res.status(400).json({message: "Bad request"})
+    const msg = req.body.message
+    if (!msg || typeof msg !== "string") return res.status(400).json({message: "Bad request"})
     if (!await InitUser(req.user.id)) return res.status(400).json({message: "Bad request"})
-    history[req.user.id].history = await SendRequest(history[req.user.id].history, req.body.message, history[req.user.id].infos)
+    // @ts-ignore
+    history[req.user.id].history = await SendRequest(history[req.user.id].history, removeTags(msg), history[req.user.id].infos)
     res.json({
         answer: history[req.user.id].history[history[req.user.id].history.length - 1].content,
     })
 })
 
 async function InitUser(id: number): Promise<boolean> {
-    if (!history[id]) {
-        const res = await db.query("SELECT * FROM utilisateur WHERE idutilisateur = $1", [id])
-        if (res.rows.length === 0) return false
-        const role = await db.query("SELECT * FROM getrole($1)", [id])
-        const infos = {
-            id,
-            first_name: res.rows[0].nom,
-            email: res.rows[0].email,
-            role: role.rows[0].getrole,
+    try {
+
+        if (!history[id]) {
+            const res = await db.query("SELECT * FROM utilisateur WHERE idutilisateur = $1", [id])
+            if (res.rows.length === 0) return false
+            const role = await db.query("SELECT * FROM getrole($1)", [id])
+            const infos = {
+                id,
+                first_name: res.rows[0].nom,
+                email: res.rows[0].email,
+                role: role.rows[0].getrole,
+            }
+            const prompt = readFileSync("./lib/prompt.txt", "utf-8") + `La personne s'appelle ${infos.first_name} et son email est ${infos.email}.Il est ${infos.role}.`;
+            history[id] = {
+                history: [{content: prompt, role: "system"}],
+                infos
+            }
         }
-        const prompt = readFileSync("./lib/prompt.txt", "utf-8") + `La personne s'appelle ${infos.first_name} et son email est ${infos.email}.Il est ${infos.role}.`;
-        history[id] = {
-            history: [{content: prompt, role: "system"},
-                {
-                    content: `Salut ${infos.first_name} ! Comment puis-je t'aider ?`,
-                    role: "assistant"
-                }
-            ],
-            infos
-        }
+        return true
+    } catch (e) {
+        console.error(e)
+        return false
     }
-    return true
+}
+
+function removeTags(str: string) {
+    if ((str === null) || (str === ''))
+        return false;
+    str = str.toString();
+    return str.replace(/(<([^>]+)>)/ig, '');
 }
 
 export default router
