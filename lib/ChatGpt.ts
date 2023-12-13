@@ -1,33 +1,32 @@
 import OpenAI from "openai";
-import { ChatCompletionMessageParam } from "openai/src/resources/chat/completions";
-import { readFileSync } from "fs";
+import {ChatCompletionMessageParam} from "openai/src/resources/chat/completions";
+import {Infos} from "../routes/Chatbot";
 
 interface Message {
-  role: string;
-  content: string;
+    role: string;
+    content: string;
 }
 
 export async function SendRequest(
-  fullHistory: Array<ChatCompletionMessageParam>,
-  text: string
+    fullHistory: Array<ChatCompletionMessageParam>,
+    text: string,
+    infos: Infos
 ) {
-  const openai = new OpenAI({
-    apiKey: process.env.CHATGPT,
-  });
-  const prompt = readFileSync("./lib/prompt.txt", "utf-8");
-  if (fullHistory.length === 0)
-    fullHistory.push({ content: prompt, role: "system" });
-  fullHistory.push({ content: text, role: "user" });
+    const openai = new OpenAI({
+        apiKey: process.env.CHATGPT,
+    });
 
-  const response = await openai.chat.completions.create({
-    messages: fullHistory,
-    model: "gpt-3.5-turbo",
-  });
+    fullHistory.push({content: text, role: "user"});
 
-  fullHistory.push({
-    role: "assistant",
-    content: response.choices[0].message.content,
-  });
+    const response = await openai.chat.completions.create({
+        messages: fullHistory,
+        model: "gpt-3.5-turbo",
+    });
 
-  return fullHistory;
+    fullHistory.push({
+        role: "assistant",
+        content: response.choices[0].message.content,
+    });
+
+    return fullHistory;
 }
