@@ -19,7 +19,7 @@ app.use(cookieParser())
 app.use("/chatbot", Chatbot)
 
 app.get("/", (req, res) => {
-    res.send("Hello world")
+    res.send("Hello world 2")
 })
 
 app.listen(port, () => {
