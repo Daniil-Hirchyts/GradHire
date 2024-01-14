@@ -18,6 +18,10 @@ app.use(cors({
 app.use(cookieParser())
 app.use("/chatbot", Chatbot)
 
+app.get("/", (req, res) => {
+    res.send("Hello world")
+})
+
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 });
