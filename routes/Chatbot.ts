@@ -42,7 +42,6 @@ router.post("/", verifyToken, async (req: RequestWithUser, res: Response) => {
 
 async function InitUser(id: number): Promise<boolean> {
     try {
-
         if (!history[id]) {
             const res = await db.query("SELECT * FROM utilisateur WHERE idutilisateur = $1", [id])
             if (res.rows.length === 0) return false
