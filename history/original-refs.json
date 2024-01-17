@@ -1,0 +1,211 @@
+{
+  "sources": [
+    {
+      "repository": "GradHire/GradHire-website",
+      "default_branch": "main",
+      "default_head": "74d540897ef68b90f91a7322bae8d5249d2c06ca"
+    },
+    {
+      "repository": "GradHire/Chatbot",
+      "default_branch": "master",
+      "default_head": "6b0f381431aa6000de8d0cc75cc297d2f1053da2"
+    }
+  ],
+  "refs": [
+    {
+      "repository": "GradHire/GradHire-website",
+      "ref": "refs/heads/Avis",
+      "sha": "352f82cc5ab2336a6104fab3a1982d3b1a4313ae"
+    },
+    {
+      "repository": "GradHire/GradHire-website",
+      "ref": "refs/heads/Candidature",
+      "sha": "0e4a71f0d9187bd7f24b53a9605d52ff23827ac8"
+    },
+    {
+      "repository": "GradHire/GradHire-website",
+      "ref": "refs/heads/Conventions",
+      "sha": "5a2b4bc8855d797df4ee8d19776e03bb712ba191"
+    },
+    {
+      "repository": "GradHire/GradHire-website",
+      "ref": "refs/heads/ImportPstage",
+      "sha": "b61d9bf29fe9c6602f410efec5b7630e455165b1"
+    },
+    {
+      "repository": "GradHire/GradHire-website",
+      "ref": "refs/heads/ImportScodoc",
+      "sha": "0df77465ff4cd1eed483740720b123275c827ea9"
+    },
+    {
+      "repository": "GradHire/GradHire-website",
+      "ref": "refs/heads/ImportStudea",
+      "sha": "dbbade036bd15d4009a4174fc5b9b0faa09f9685"
+    },
+    {
+      "repository": "GradHire/GradHire-website",
+      "ref": "refs/heads/Layout",
+      "sha": "ccf85a70dbf79d2b42a0d7d800eaef6bad39c69a"
+    },
+    {
+      "repository": "GradHire/GradHire-website",
+      "ref": "refs/heads/Maintenance",
+      "sha": "df0fcad26d66504e59c9f67ead5fcf5c81a83b74"
+    },
+    {
+      "repository": "GradHire/GradHire-website",
+      "ref": "refs/heads/calendar",
+      "sha": "a53e003d74ce2499b58a79c20c48251c969eff86"
+    },
+    {
+      "repository": "GradHire/GradHire-website",
+      "ref": "refs/heads/dashboard",
+      "sha": "6024611d2c92a96547aadffbb1e9859216274408"
+    },
+    {
+      "repository": "GradHire/GradHire-website",
+      "ref": "refs/heads/dev",
+      "sha": "b369194078ff551f9833eed22c465954474947bd"
+    },
+    {
+      "repository": "GradHire/GradHire-website",
+      "ref": "refs/heads/dev-style-fix",
+      "sha": "4296c1128187734728013fce6bd03b01b2deef4b"
+    },
+    {
+      "repository": "GradHire/GradHire-website",
+      "ref": "refs/heads/form-system",
+      "sha": "78e20dc85ee98dddad66d6d6ca8c0a51fb7e5684"
+    },
+    {
+      "repository": "GradHire/GradHire-website",
+      "ref": "refs/heads/main",
+      "sha": "74d540897ef68b90f91a7322bae8d5249d2c06ca"
+    },
+    {
+      "repository": "GradHire/GradHire-website",
+      "ref": "refs/heads/maintenance",
+      "sha": "9707883411acc8947ce0074e9608e513fa93dcbd"
+    },
+    {
+      "repository": "GradHire/GradHire-website",
+      "ref": "refs/heads/modifBD",
+      "sha": "8624eff415725c80aa1a1635cd4d093048a5c21d"
+    },
+    {
+      "repository": "GradHire/GradHire-website",
+      "ref": "refs/heads/newsletter",
+      "sha": "8770cb7ac1206c3062505771d74343542e44efc4"
+    },
+    {
+      "repository": "GradHire/GradHire-website",
+      "ref": "refs/heads/notation",
+      "sha": "3f7b7445a7a3e70ca011ee74bce2de4605f2a2bb"
+    },
+    {
+      "repository": "GradHire/GradHire-website",
+      "ref": "refs/heads/offres",
+      "sha": "b502286999ed00501ba9a93340876c26b0195412"
+    },
+    {
+      "repository": "GradHire/GradHire-website",
+      "ref": "refs/heads/refactoring",
+      "sha": "f9a4a4fdaac44046b0f944c87aff8d5d5e506862"
+    },
+    {
+      "repository": "GradHire/GradHire-website",
+      "ref": "refs/heads/refactoring-Daniil",
+      "sha": "5030cfff8a3cef0405dffaaab548185200e40026"
+    },
+    {
+      "repository": "GradHire/GradHire-website",
+      "ref": "refs/heads/refactoring-clement",
+      "sha": "395b17ce30b982dde531a5595bd972b3f385b992"
+    },
+    {
+      "repository": "GradHire/GradHire-website",
+      "ref": "refs/heads/refactoringGiovanni",
+      "sha": "16cd56241aeea8198e609097e72121cc1cd2a228"
+    },
+    {
+      "repository": "GradHire/GradHire-website",
+      "ref": "refs/heads/soutenances",
+      "sha": "53b742e20f3f786d915fc28044a97ea9fc710478"
+    },
+    {
+      "repository": "GradHire/GradHire-website",
+      "ref": "refs/heads/systeme-authentification",
+      "sha": "79c78c91cc7d81082c108efafeaec274f380d67e"
+    },
+    {
+      "repository": "GradHire/GradHire-website",
+      "ref": "refs/pull/136/head",
+      "sha": "db1b36c74e0f29b31e23ccfcdd939eef633403b2"
+    },
+    {
+      "repository": "GradHire/GradHire-website",
+      "ref": "refs/pull/137/head",
+      "sha": "2988fbaa91f7177fc7dc258ce75da8d6cf0693a7"
+    },
+    {
+      "repository": "GradHire/GradHire-website",
+      "ref": "refs/pull/46/head",
+      "sha": "9707883411acc8947ce0074e9608e513fa93dcbd"
+    },
+    {
+      "repository": "GradHire/GradHire-website",
+      "ref": "refs/pull/47/head",
+      "sha": "4dc4275cfea98867e2fcc4884b0aeaccbcd6a839"
+    },
+    {
+      "repository": "GradHire/GradHire-website",
+      "ref": "refs/pull/48/head",
+      "sha": "2929c77eaf7faca9733e31173248f7d7cafa1c9c"
+    },
+    {
+      "repository": "GradHire/GradHire-website",
+      "ref": "refs/pull/49/head",
+      "sha": "dc6fbd81c55290eaa29e97366f9564b7c9128726"
+    },
+    {
+      "repository": "GradHire/GradHire-website",
+      "ref": "refs/pull/50/head",
+      "sha": "63cb26805c848d91351287b854daa0f1e5db8ddb"
+    },
+    {
+      "repository": "GradHire/GradHire-website",
+      "ref": "refs/pull/51/head",
+      "sha": "12976e4bf4e791d3981ce2679e2da0bd5bcef8f3"
+    },
+    {
+      "repository": "GradHire/GradHire-website",
+      "ref": "refs/pull/52/head",
+      "sha": "ee42e27d072407928e40a863f1139e3014c0923e"
+    },
+    {
+      "repository": "GradHire/GradHire-website",
+      "ref": "refs/pull/53/head",
+      "sha": "45567534cb8410898294057a695e976e7a66b13e"
+    },
+    {
+      "repository": "GradHire/GradHire-website",
+      "ref": "refs/pull/55/head",
+      "sha": "30fd2203b2c15637d91d5b37804e7451ec019030"
+    },
+    {
+      "repository": "GradHire/GradHire-website",
+      "ref": "refs/pull/63/head",
+      "sha": "a622ec55560ac4684e543e9d23730f84342f3647"
+    },
+    {
+      "repository": "GradHire/GradHire-website",
+      "ref": "refs/pull/64/head",
+      "sha": "69125798b9dfec79b0d9b8c50a179835a91fd7a2"
+    },
+    {
+      "repository": "GradHire/Chatbot",
+      "ref": "refs/heads/master",
+      "sha": "6b0f381431aa6000de8d0cc75cc297d2f1053da2"
+    }
+  ]
+}

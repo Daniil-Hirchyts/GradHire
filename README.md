@@ -1,156 +1,74 @@
-# GradHire - Le projet de BUT Informatique
+# GradHire
 
-Ce document offre un aperçu de la plateforme GradHire, développée par les étudiants de BUT Informatique à l'IUT Montpellier-Sète pendant leur troisième semestre. GradHire agit comme un pont entre la formation académique et les exigences du marché de l'emploi.
+**Internship and apprenticeship management platform with an AI assistance service · 2023–2024**
 
-## Équipe
+We developed **GradHire** during the third semester of the **BUT Informatique at IUT Montpellier–Sète**. The project centralised internship and apprenticeship offers, applications and academic follow-up for students, employers and university staff.
 
-- Marius BROUTY
-- Clément GARRO
-- Giovanni GOZZO
-- Daniil HIRCHYTS
+The completed work included a PHP web platform and a separate chatbot API connected to the website's chat interface.
 
-Année Académique : 2023-2024
+## Components
 
----
+| Component | Completed work | Main technologies |
+| --- | --- | --- |
+| [Website](website/) | Accounts, offers, applications, placement agreements, academic follow-up, calendars, imports and dashboards. | PHP 8.2, PostgreSQL, Tailwind CSS, JavaScript |
+| [Chatbot service](chatbot/) | Authenticated chat endpoints, conversation history and AI-generated assistance integrated into the website. | Node.js, TypeScript, Express, OpenAI API, PostgreSQL, JWT |
 
-## Introduction
+## The web platform
 
-GradHire est une plateforme web conçue pour faciliter l'entrée des étudiants dans la vie professionnelle en offrant un espace centralisé pour les offres de stages et de programmes en alternance des entreprises.
+We implemented separate workflows for the platform's main user groups:
 
-## Description du Projet
+| User group | Implemented features |
+| --- | --- |
+| **Students** | Offer browsing and filtering, applications, application-status views and access to placement follow-up information. |
+| **Employers** | Account registration, offer creation and management, candidate communication and company information. |
+| **University staff** | Offer and account administration, application supervision, placement agreements, visits, defence scheduling, feedback and assessment records. |
 
-GradHire est une plateforme innovante conçue pour faciliter les connexions entre les étudiants et le monde professionnel. Elle offre un ensemble complet de fonctionnalités pour améliorer l'expérience des utilisateurs, qu'ils soient des entreprises ou des étudiants.
+Shared functionality included:
 
----
+- Authentication with account roles and an LDAP integration.
+- Offer and academic-data imports, with validation and database updates.
+- Calendars for visits and oral defences.
+- Notifications, email communication and newsletters.
+- Dashboards with statistics, charts and offer summaries.
+- Placement-document and PDF functionality.
+- Reusable forms, validation rules and interface components.
+- Personalised navigation and a chat panel connected to the chatbot service.
 
-### Fonctionnalités pour les Entreprises
+The website used an object-oriented PHP MVC structure. Controllers handled requests, repositories accessed PostgreSQL through PDO, and views assembled the user interface. Tailwind CSS and JavaScript supported the forms, tables, calendars, charts and navigation.
 
-- **Inscription :** Permet aux entreprises de s'enregistrer en fournissant des informations essentielles.
-- **Publication des Offres :** Facilite la création et la mise en ligne d'offres de stages ou d'alternances.
-- **Gestion des Offres :** Inclut l'importation des offres via CSV, la création, la validation, la modification et la suppression des offres.
-- **Communication Directe :** Système permettant de contacter facilement les candidats et d'envoyer des newsletters.
+Source: [controllers](website/src/controller/), [models and repositories](website/src/model/), [views](website/src/view/) and [frontend scripts](website/public_html/resources/js/).
 
-### Fonctionnalités pour les Étudiants
+## The chatbot service
 
-- **Consultation des Offres :** Possibilité pour les étudiants de rechercher, de filtrer et de consulter les offres disponibles.
-- **Candidature aux Offres :** Permet aux étudiants de postuler aux offres directement sur la plateforme.
-- **Gestion des Candidatures :** Suivre l'état des candidatures, accepter des offres et gérer le processus de l'entrevue à la soutenance.
-- **Calendrier :** Un calendrier pour planifier les soutenances et les visites.
+The chatbot provided a separate API for assistance within the platform. Its implementation included:
 
-### Fonctionnalités Académiques
+- Express routes for retrieving conversations and submitting messages.
+- JWT authentication middleware.
+- User-role context in the assistant's instructions.
+- OpenAI chat-completion requests.
+- Conversation history held in memory for each authenticated user.
+- User information and roles retrieved from PostgreSQL.
+- Integration with the website's JavaScript chat interface.
 
-- **Gestion des Soutenances :** Outils pour planifier et consulter les soutenances et visites.
-- **Système des Avis et Comptes Rendus :** Publication et gestion des avis relatifs à des soutenances ou à l'expérience utilisateur.
-- **Gestion des Entreprises :** Permet aux enseignants de consulter et de gérer les comptes des entreprises.
-- **Gestion des Offres :** Permet aux enseignants de consulter et de gérer les offres.
-- **Gestion des Candidatures :** Permet aux enseignants de consulter et de gérer les candidatures.
-- **Gestion des Comptes :** Permet aux enseignants de consulter et de gérer les comptes des utilisateurs.
+TypeScript organised the service into routes, middleware, database access and an OpenAI request module. Separate Docker configurations were included for the website and chatbot.
 
-### Sécurité et Personnalisation
+Source: [chat routes](chatbot/routes/Chatbot.ts), [authentication middleware](chatbot/middlewares/authMiddleware.ts), [OpenAI module](chatbot/lib/ChatGpt.ts) and [website chat integration](website/public_html/resources/js/chatbot.js).
 
-- **Sécurité :** Protection contre les injections SQL et XSS, et cryptage des mots de passe pour assurer la confidentialité et l'intégrité des données.
-- **Personnalisation :** Possibilité pour les utilisateurs de personnaliser leur expérience sur la plateforme, notamment en ajustant leur barre latérale.
+## Project team
 
-### Outils d'Assistance et Ressources Supplémentaires
+- **[Marius Brouty](https://github.com/Marius-brt)**
+- **[Clément Garro](https://github.com/Clement-Garro)**
+- **Giovanni Gozzo**
+- **[Daniil Hirchyts](https://github.com/Daniil-Hirchyts)**
 
-- **Chatbot :** Intégration d'un chatbot pour l'assistance aux utilisateurs et la réponse aux questions fréquentes.
-- **Simulation de Pstage :** Un simulateur pour épauler les étudiants dans la préparation de leurs stages.
-- **Statistiques :** Un tableau de bord pour visualiser les statistiques de la plateforme.
-- **Ressources :** Un espace pour les ressources supplémentaires telles que les liens vers les sites des entreprises.
+The original history also included contributions by **[Lucas34750](https://github.com/Lucas34750)**. All original authorship records were retained.
 
-### Analyse et Conception
+## Project history
 
-- **Diagrammes UML :** Utilisation de diagrammes Use Case et de séquences pour une meilleure compréhension des interactions utilisateur.
-- **Modélisation de la Base de Données :** Un modèle Entité-Relation détaillé pour un système robuste et structuré.
+Development was recorded between September 2023 and January 2024. Both application snapshots and their original histories were preserved, including website work from development branches. The original branch and pull-request references were recorded in [history/original-refs.json](history/original-refs.json).
 
-### Déploiement et Maintenance
+The original [website README](website/README.md), application configurations and build scripts were retained with their respective components.
 
-- **Solutions de Conteneurisation :** Utilisation de Docker pour un déploiement simplifié et fiable de la plateforme.
-- **Maintenance Facilitée :** Structure du projet basée sur le modèle MVC pour une évolutivité et une maintenance efficace.
-- **Documentation :** Documentation complète pour faciliter la maintenance et l'extension du projet.
+## License
 
-GradHire représente une solution clé pour les organisations cherchant à recruter des talents et pour les étudiants désireux de se lancer dans des carrières enrichissantes en adéquation avec leur formation académique.
-
-## Analyse et Conception
-
-Utilisation de différents diagrammes UML pour affiner notre base de code et maximiser l'adhésion aux principes SOLID.
-
-## Système d'Authentification
-
-Processus de connexion détaillé pour différents profils d'utilisateur tels que les comptes professionnels, LDAP et la supervision des étudiants.
-
-## Gestion de Compte
-
-Outils pour la maintenance complète du compte, y compris les changements de mot de passe et l'accès au tableau de bord pour des statistiques et gestion.
-
-## Gestion des Offres
-
-Fonctionnalités pour l'importation d'offres via CSV, la gestion des publications et l'envoi de newsletters aux abonnés.
-
-## Sécurité et Personnalisation
-
-Des fonctionnalités de sécurité de pointe telles que le stockage de mot de passe crypté et la validation des cookies, couplées à des expériences utilisateur personnalisables.
-
-## Diagrammes
-
-Des diagrammes complets, y compris des modèles Entité-Relation, des diagrammes de Cas d'Utilisation, et des Diagrammes de Classe sont fournis pour illustrer la conception du système.
-
-_Pour un ensemble complet de diagrammes, accédez à notre [Diagrammes dans le rapport](https://drive.google.com/file/d/1cxeMwlNlAfpbL-QIwYSCCJOAMf-A2NXo/view)._
-
----
-
-## Démarrage Rapide
-
-- **Configuration avec Docker :** Instructions pour configurer le projet en utilisant des conteneurs Docker.
-- **Configuration Locale :**
-> (1) Clonez le dépôt sur votre machine locale.
-> 
->(2) Installez les dépendances avec `npm install`.
-> 
->(3) Démarrez le watcher de TailwindCSS avec `npm run watch`.
-> 
->(4) Démarrez le serveur avec `npm run dev`.
-> 
->(5) Accédez à `localhost:8080` pour voir le site.
-
-_Pour des instructions de configuration complètes et des tutoriels, visitez [Utilisation de notre site](https://drive.google.com/file/d/1cxeMwlNlAfpbL-QIwYSCCJOAMf-A2NXo/view)._
-
----
-
-## Licence
-
-La permission est par la présente accordée, gratuitement, à toute personne obtenant une copie
-de ce logiciel et des fichiers de documentation associés (le "Logiciel"), pour traiter
-le Logiciel sans restriction, y compris sans limitation les droits
-d'utilisation, de copie, de modification, de fusion, de publication, de distribution, de sous-licence, et/ou de vente
-des copies du Logiciel, et de permettre aux personnes à qui le Logiciel est
-fourni de le faire, sous réserve des conditions suivantes:
-
-* La mention de copyright ci-dessus et cet avis de permission doivent être inclus dans tous
-les copies ou portions substantielles du Logiciel.
-
-* Le contenu du Site est mis à disposition pour une utilisation libre et sans restriction, en vertu des conditions énoncées ci-après.
-
-* L'Utilisateur qui souhaite réutiliser toute partie du code de projet doit obligatoirement spécifier le ou les auteurs originaux du Site.
-
-* Avant toute réutilisation du Site, que ce soit en totalité ou en partie, il est nécessaire de demander et d'obtenir la permission des auteurs de son contenu.
-
-* Il est interdit de réutiliser le Site ou une partie de son contenu dans un but lucratif, à moins que l'Utilisateur ait obtenu l'autorisation préalable et explicite des auteurs.
-
-* L'utilisation du Site est exclusivement réservée aux membres du personnel de l'Institut Universitaire de Technologie (IUT) de Montpellier-Sète. Toute autre utilisation par une personne non membre du personnel susmentionné est strictement interdite.
-
-* Toutes actions illicites, telles que les injonctions, les attaques XSS et autres types d'infractions cybernétiques, sont strictement interdites. Toute violation de cette nature sera traitée conformément à la loi en vigueur. Une exception est faite pour les professeurs de l'IUT qui peuvent effectuer de telles actions dans le cadre de leurs recherches académiques.
-
-* Toute violation de ces conditions pourrait entraîner des conséquences juridiques.
-
-Copyright (c) 2023-2024 GradHire
-- BROUTY Marius
-- GARRO Clément
-- GOZZO Giovanni
-- HIRCHYTS Daniil
----
-
-Pour une compréhension plus détaillée de GradHire et ses aspects techniques, veuillez vous référer au rapport complet.
-
-_Des tutoriels et ressources supplémentaires peuvent être trouvés [ici](https://drive.google.com/file/d/1cxeMwlNlAfpbL-QIwYSCCJOAMf-A2NXo/view)._
-
+The website's original license, including its attribution and additional usage conditions, was retained unchanged in [LICENSE](LICENSE) and [website/LICENSE](website/LICENSE). The chatbot's [package metadata](chatbot/package.json) declared MIT. Bundled third-party components retained their original notices.
